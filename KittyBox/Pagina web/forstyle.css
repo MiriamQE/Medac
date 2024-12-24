@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:wght@400;800&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../img/fondogatuno.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    background-color: rgb(159, 123, 65);
+    height: 70px;
+    width: 100%;
+    padding: 5px 20%;
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.logo {
+    width: 20px;
+    height: 20px;
+}
+
+.header .logo img {
+    height: 50px;
+    width: auto;
+    display: flex;
+    position: relative;
+    top: 5px;
+}
+
+.header .nav-links {
+    list-style: none;
+    position: relative;
+    top: 15px;
+}
+
+.header .nav-links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.header .nav-links a {
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.header .nav-links li a {
+    color: #f9f0e1;
+}
+
+.header .btn button{
+    color: #d0a582;
+    padding: 9px 25px;
+    background-color: white;
+    position: relative;
+    top: 13px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.header .btn button:hover {
+    background-color: #d0a582;
+    color: white;
+    transform: scale(1.1);
+
+}
+
+.title2 {
+    font-size: 56px;
+    font-family: 'Bebas Neue';
+    letter-spacing: 6px;
+    color: #d0a582;
+    position: relative;
+    top: 170px;
+    text-shadow: 2px 2px 0 #695635;
+    text-align: center;
+    scroll-margin-top: 70px;
+}
+
+.container3 {
+    width: 1000px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    background-color: white;
+    border-radius: 30px;
+    margin: auto;
+    position: relative;
+    top: 170px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+input {
+    padding-top: 2px;
+    padding-left: 2px;
+    background-color: bisque;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.field label {
+    font-family: 'Bebas Neue';
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d0a582
+}
+
+.formationbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.formationbox label {
+    font-family: 'Bebas Neue';
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d0a582
+
+}
+
+textarea {
+    resize: none;
+    width: 760px;
+    height: 118px;
+    padding-top: 2px;
+    padding-left: 2px;
+    background-color: bisque;
+}
+
+.submit{
+    display: flex;
+    text-align: center;
+    padding: 4px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.submit button {
+    padding: 10px 20px;
+    font-family: 'Bebas Neue';
+    font-size: 20px;
+    color: white;
+    letter-spacing: 2px;
+    background-color: #d0a582;
+    border-width: 1px;
+}

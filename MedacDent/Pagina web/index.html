@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="func.js"></script>
+    <title>interfaz MedacDent</title>
+</head>
+<body>
+    <header class="header"><h1>Medac<span>Dent</span></h1><div class="logo"><img src="../img/dentallogo.png">
+    </div>
+    </header>
+  
+        <div class="flex"><div class="container"><h3>Ingresa los datos</h3>
+  <div class="form-container">
+    <input type="text" id="name" placeholder="Nombre">
+    <input type="text" id="surname" placeholder="Apellidos">
+    <input type="text" id="dni" placeholder="DNI">
+    <input type="date" id="date" placeholder="Fecha">
+    <input type="tel" id="time" placeholder="Hora">
+    <input type="tel" id="phone" placeholder="Teléfono">
+    <input type="text" id="remarks" placeholder="Observaciones">
+    <button class="add-row" onclick="addRow()">Añadir registro</button>
+  </div>
+        </div>
+        
+        <div class="container2"><table>
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>DNI</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Teléfono</th>
+                    <th>Observaciones</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <!-- Las nuevas citas aparecerán aquí -->
+                </tbody>
+              </table></div></div></div>
+
+    <footer><div class="contact">
+            <div class="direccion"><h3>DIRECCIÓN</h3><br>Calle Gerona, 21<br>
+            29004 Málaga</div>
+            <div class="horario"><h3>HORARIO</h3><br>Lunes a Jueves: 09.00 - 20.00<br>
+              Viernes: 09.00 - 14.00</div>
+            <div class="informacion"><h3>INFORMACIÓN Y CITAS</h3><br>851 780 053<br>
+              info@medacdent.com</p>
+        </div></div>   
+    </footer>
+</body>
+</html>

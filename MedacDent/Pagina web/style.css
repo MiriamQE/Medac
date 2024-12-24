@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color:aliceblue;
+  font-family:'Roboto';
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  color: #3498db;
+}
+
+.header h1 span {
+  color: #0b4ea3;
+}
+
+.logo {
+  float: right;
+}
+
+.logo img {
+  max-height: 50px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.container {
+  width: 25%;
+  height: 570px;
+  padding: 20px;
+  align-content: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  }
+
+.container h3 {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-align: center;
+  color: #0b4ea3;
+  padding: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.container2 {
+  width: 75%;
+  height: 570px;
+  overflow-x: hidden;
+  align-content: center;
+  }
+
+/* Tabla */
+table {
+  width: 100%;
+  height: auto;
+  position: relative;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  vertical-align: top; 
+}
+
+th {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+}
+
+th:nth-child(1) {
+  background-color: #3498db;
+}
+
+th:nth-child(2) {
+  background-color: #0b4ea3;
+}
+
+th:nth-child(3) {
+  background-color: #3498db;
+}
+
+th:nth-child(4) {
+  background-color: #0b4ea3;
+}
+
+th:nth-child(5) {
+  background-color: #3498db;
+}
+
+th:nth-child(6) {
+  background-color: #0b4ea3;
+}
+
+th:nth-child(7) {
+  background-color: #3498db;
+}
+
+th:nth-child(8) {
+  background-color: #3498db;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Botones */
+.add-row {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+table button {
+  padding: 5px 10px;
+  margin: 3px;
+  background-color: #f39c12;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table button:hover {
+  background-color: #e67e22;
+}
+
+.add-row:hover {
+  background-color: #27ae60;
+}
+
+/* Casillas para nuevos registros */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-container input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.form-container input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Pie de pagina */
+
+footer {
+  background-color: #0b4ea3;;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  color: white;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  column-gap: 60px;
+  font-size: 14px;
+}
+
+.contact h3 {
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.contact p {
+  margin-top: 3px;
+}

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadSavedData();
 });
 
-let editIndex = null; // Variable global para rastrear qué campo se está editando
+let editIndex = null; // Variable global para saber qué campo se está editando
 
 // Función para cargar datos guardados al iniciar la aplicación
 function loadSavedData() {
@@ -40,7 +40,7 @@ function saveAppointment(newAppointment) {
 }
 
 // Función para añadir o guardar un registro
-function addRow() {
+function handleAddOrEdit() {
   const name = document.getElementById("name").value.trim();
   const surname = document.getElementById("surname").value.trim();
   const dni = document.getElementById("dni").value.trim();
@@ -49,7 +49,7 @@ function addRow() {
   const phone = document.getElementById("phone").value.trim();
   const remarks = document.getElementById("remarks").value.trim();
 
-  // Valida que todos los campos estén completos
+// Valida que todos los campos estén completos
   if (!name || !surname || !dni || !date || !time || !phone || !remarks) {
     alert("Por favor, completa todos los campos antes de continuar.");
     return;
@@ -57,52 +57,47 @@ function addRow() {
 
   const errors = {};
 
-  // Validación para el campo name
+  // Error de campos
   if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(name)) {
     errors.name = "El nombre solo puede contener letras y espacios.";
   }
-
-  // Validación para el campo surname
   if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/.test(surname)) {
     errors.surname = "El apellido solo puede contener letras y espacios.";
   }
-
-  // Validación para el campo dni
   if (!/^\d{8}[a-zA-Z]$/.test(dni) || dni.length !== 9) {
     errors.dni = "El DNI debe tener exactamente 8 números seguidos de una letra.";
   }
-
-  // Validación para el campo time
   if (!/^\d{2}:\d{2}$/.test(time)) {
-    errors.time = "La hora debe redactarse en formato HH:MM, usando solo números y el símbolo ':'.";
+    errors.time = "La hora debe redactarse en formato HH:MM, usando solo números y el símbolo ':'";
   }
-
-  // Validación para el campo phone
   if (isNaN(phone) || phone.length !== 9) {
     errors.phone = "El teléfono debe tener 9 dígitos.";
   }
 
-  // Si hay errores, se muestra mensaje
   if (Object.keys(errors).length > 0) {
     showValidationErrors(errors);
     return;
   }
 
-  // Crea nuevo registro
   const newAppointment = { name, surname, dni, date, time, phone, remarks };
 
-  // Guarda en cookies
-  saveAppointment(newAppointment);
-
-  // Inserta en la tabla
-  addRowToTable(newAppointment, getAppointments().length - 1);
-
-  // Eliminar fila "dato vacío" si existe
-  const emptyRow = document.getElementById("empty-row");
-  if (emptyRow) {
-    emptyRow.remove();
+  // Si se está editando un registro, actualizarlo
+  if (editIndex !== null) {
+    const appointments = getAppointments();
+    appointments[editIndex] = newAppointment; // Reemplaza el registro editado
+    document.cookie = `appointments=${encodeURIComponent(JSON.stringify(appointments))};path=/`;
+    editIndex = null;
+  } else {
+    // Si no se está editando, agregar un nuevo registro
+    saveAppointment(newAppointment);
   }
-  clearInputs();
+
+  reloadTable(); // Recarga la tabla después de añadir o editar el registro
+  clearInputs(); // Limpia los campos de entrada
+
+  // Cambiar el texto del botón de vuelta a "Añadir registro"
+  const saveButton = document.getElementById("add-row-button");
+  saveButton.textContent = "Añadir registro";
 }
 
 // Función para mostrar los errores de validación
@@ -117,8 +112,6 @@ function showValidationErrors(errors) {
 // Función para añadir un registro a la tabla
 function addRowToTable(record, index) {
   const tableBody = document.getElementById("table-body");
-
-  // Crea nueva fila
   const newRow = document.createElement("tr");
 
   newRow.innerHTML = `
@@ -138,17 +131,33 @@ function addRowToTable(record, index) {
   tableBody.appendChild(newRow);
 }
 
+// Función para editar un registro
+function editRow(index) {
+  const appointments = getAppointments();
+  const appointment = appointments[index];
+
+  document.getElementById("name").value = appointment.name;
+  document.getElementById("surname").value = appointment.surname;
+  document.getElementById("dni").value = appointment.dni;
+  document.getElementById("date").value = appointment.date;
+  document.getElementById("time").value = appointment.time;
+  document.getElementById("phone").value = appointment.phone;
+  document.getElementById("remarks").value = appointment.remarks;
+
+  // Cambiar el texto del botón a "Guardar cambios"
+  const saveButton = document.getElementById("add-row-button");
+  saveButton.textContent = "Guardar cambios";
+  editIndex = index;
+}
+
 // Función para eliminar un registro
 function deleteRow(index) {
   const appointments = getAppointments();
-
   // Elimina el registro del array
   appointments.splice(index, 1);
-
-  // Actualizar cookies
+  // Actualización de cookies
   document.cookie = `appointments=${encodeURIComponent(JSON.stringify(appointments))};path=/`;
-
-  // Recargar la tabla
+  // Recarga la tabla
   reloadTable();
 }
 
@@ -156,7 +165,6 @@ function deleteRow(index) {
 function reloadTable() {
   const tableBody = document.getElementById("table-body");
   tableBody.innerHTML = "";
-
   const appointments = getAppointments();
 
   if (appointments.length === 0) {
@@ -174,7 +182,7 @@ function reloadTable() {
   }
 }
 
-// Limpia los inputs del formulario
+// Función para limpiar los campos
 function clearInputs() {
   document.getElementById("name").value = "";
   document.getElementById("surname").value = "";
